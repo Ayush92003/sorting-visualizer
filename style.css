@@ -1,0 +1,36 @@
+body {
+    background-color: #f8f9fa;
+    overflow: hidden;
+}
+.array-container{
+    height: 350px;
+    border: 1px solid #ccc;
+    margin-top: 20px;
+    position: relative;
+}
+.array-bar{
+    background-color: #007bff;
+    margin: 0 3px;
+    display: inline-block;
+    vertical-align: bottom;
+    transform-origin: bottom;
+    transition: transform 0.3s, height 0.2s, background-color 0.2s;
+}
+.array-bar.sorted {
+    background-color: #28a745;
+}
+
+.array-bar.compared {
+    background-color: #ffc107;
+}
+#speedValue{
+    margin-right: 20px;
+}
+#mergeSort{
+    background-color: purple;
+    border:none;
+    color: white;
+    &:hover{
+        background-color: rgba(141, 18, 141, 0.8);
+    }
+}

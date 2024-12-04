@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sorting Visualizer</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-dark text-dark">
+    <div class="container text-center my-4 bg-dark text-white p-4">
+        <h1>Sorting Visualizer</h1>
+        <div class="controls my-3 d-flex align-items-center justify-content-center" >
+            <input type="number" id="arraySize" placeholder="Enter array size (5-100)" class="form-control d-inline-block w-25 me-2">
+            <label for="sortingSpeed">Delay Time</label>
+            <input type="range" id="sortingSpeed" min="1" max="500" value="100" oninput="updateSpeed(this.value)">
+            <span id="speedValue">100(ms)</span>
+            <button id="generateArray" class="btn btn-primary me-2">Generate Array</button>
+            <button id="bubbleSort" class="btn btn-success me-2">Bubble Sort</button>
+            <button id="selectionSort" class="btn btn-info me-2">Selection Sort</button>
+            <button id="insertionSort" class="btn btn-warning me-2">Insertion Sort</button>
+            <button id="mergeSort" class="btn btn-outline-info me-2">Merge Sort</button>
+            <button id="quickSort" class="btn btn-light me-2">Quick Sort</button>
+            <button id="clear" class="btn btn-danger me-2">Clear All</button>
+        </div>
+        <div id="array-container" class="array-container d-flex align-items-end"></div>
+        <div class="alert alert-success my-2" id="info" style="display: none;">
+            <h4 class="alert-heading">Sorting Complete!</h4>
+            <p>All the elements are sorted in ascending order.</p>
+            <hr>
+            <p class="mb-0">Time Complexity: <span class="badge bg-primary">O(N^2)</span></p>
+            <p class="mb-0">Space Complexity: <span class="badge bg-secondary">O(1)</span></p>
+        </div>                 
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
