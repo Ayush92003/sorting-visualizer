@@ -1,14 +1,21 @@
+/* General body styles */
 body {
     background-color: #f8f9fa;
     overflow: hidden;
+    font-family: Arial, sans-serif;
 }
-.array-container{
+
+/* Array container style */
+.array-container {
     height: 350px;
     border: 1px solid #ccc;
     margin-top: 20px;
     position: relative;
+    width: 100%;
 }
-.array-bar{
+
+/* Array bars styles */
+.array-bar {
     background-color: #007bff;
     margin: 0 3px;
     display: inline-block;
@@ -16,6 +23,7 @@ body {
     transform-origin: bottom;
     transition: transform 0.3s, height 0.2s, background-color 0.2s;
 }
+
 .array-bar.sorted {
     background-color: #28a745;
 }
@@ -23,14 +31,100 @@ body {
 .array-bar.compared {
     background-color: #ffc107;
 }
-#speedValue{
+
+/* Speed value */
+#speedValue {
     margin-right: 20px;
 }
-#mergeSort{
+
+/* Custom styles for merge sort button */
+#mergeSort {
     background-color: purple;
-    border:none;
+    border: none;
     color: white;
-    &:hover{
-        background-color: rgba(141, 18, 141, 0.8);
+}
+
+#mergeSort:hover {
+    background-color: rgba(141, 18, 141, 0.8);
+}
+
+/* Container and button layout adjustments */
+.container {
+    max-width: 100%;
+    padding: 15px;
+}
+
+/* Controls section styling */
+.controls {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+/* Input field and buttons styling */
+input[type="number"] {
+    max-width: 100px;
+}
+
+input[type="range"] {
+    flex-grow: 1;
+}
+
+button {
+    flex-grow: 0;
+    max-width: 120px;
+    margin-bottom: 10px;
+}
+
+/* For smaller screens, adjust button sizes and layout */
+@media (max-width: 768px) {
+    .controls {
+        flex-direction: column;
+        gap: 10px;
     }
+
+    input[type="number"] {
+        max-width: 80%;
+    }
+
+    button {
+        width: 100%;
+        margin: 5px 0;
+    }
+
+    #array-container {
+        height: 250px;
+    }
+}
+
+/* For very small screens (phones in portrait mode) */
+@media (max-width: 480px) {
+    .controls {
+        padding: 10px;
+    }
+
+    input[type="number"], input[type="range"] {
+        width: 100%;
+        max-width: none;
+    }
+
+    button {
+        font-size: 14px;
+        padding: 8px;
+    }
+
+    #array-container {
+        height: 200px;
+    }
+}
+
+/* General text and layout adjustments */
+h1 {
+    font-size: 1.5rem;
+}
+
+.alert {
+    font-size: 0.9rem;
 }
