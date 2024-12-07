@@ -12,7 +12,7 @@
         <div class="container text-center my-4 bg-dark text-white p-4">
             <h1 class="display-6">Sorting Visualizer</h1>
             <div class="controls inputClass my-3 d-flex align-items-center justify-content-center" >
-                <input type="number" id="arraySize" placeholder="Enter" class="arrayInput form-control d-inline-block w-25 me-2">
+                <input type="number" id="arraySize" placeholder="Size" class="arrayInput form-control d-inline-block w-25 me-2">
                 <div class="speed">
                     <label for="speedRange">Delay Speed:</label>
                     <br>
@@ -60,6 +60,14 @@
                 <hr>
                 <p class="mb-0">Time Complexity: <span class="badge bg-primary">O(NlogN)</span></p>
                 <p class="mb-0">Space Complexity: <span class="badge bg-secondary">O(N)</span></p>
+            </div>
+
+            <div class="alert alert-success my-2" id="info-3" style="display: none;">
+                <h4 class="alert-heading">Sorting Complete!</h4>
+                <p>All the elements are sorted in ascending order.</p>
+                <hr>
+                <p class="mb-0">Time Complexity: <span class="badge bg-primary">O(NlogN)</span></p>
+                <p class="mb-0">Space Complexity: <span class="badge bg-secondary">O(1)</span></p>
             </div>
         </div>
     </div>

@@ -4,11 +4,15 @@ const bubbleSortButton = document.getElementById('bubbleSort');
 const selectionSortButton = document.getElementById('selectionSort');
 const insertionSortButton = document.getElementById('insertionSort');
 const mergeSortButton = document.getElementById('mergeSort');
+const quickSortButton = document.getElementById('quickSort');
 const inputSize = document.getElementById('arraySize');
 const clearButton = document.getElementById('clear');
 const generateArray2 = document.getElementById('generate-array');
 const clear2 = document.getElementById('clear-all');
 const startSortingButton = document.getElementById('startSorting');
+
+
+
 let isSorting = false;
 if(!isSorting){
     disableButtons();
@@ -149,6 +153,52 @@ async function bubbleSort() {
     allowSorting();
 }
 
+async function partition(bars,low,high) {
+    let pivot = parseInt(bars[low].style.height);
+    let i=low , j=high;
+    while(i<j){
+        while(i<high &&parseInt(bars[i].style.height)<=pivot) i++;
+        while(parseInt(bars[j].style.height)>pivot) j--;
+        if(i<j){
+            await swap(bars,i,j);
+        }
+    }
+    await swap(bars,low,j);
+    return j;
+}
+
+async function swap(bars,i,j) {
+    bars[i].style.backgroundColor = "red";
+    bars[j].style.backgroundColor = "red";
+
+    await delay();
+
+    let tempHeight = bars[i].style.height;
+    bars[i].style.height = bars[j].style.height;
+    bars[j].style.height = tempHeight;
+
+    bars[i].style.backgroundColor = "#007bff";
+    bars[j].style.backgroundColor = "#007bff";
+}
+
+async function quickSort(bars,low,high) {
+    if(low<high){
+        let pIndex = await partition(bars,low,high);
+        await quickSort(bars,low,pIndex-1);
+        await quickSort(bars,pIndex+1,high);
+    }
+    allowSorting();
+}
+
+async function startQuickSort() {
+    const bars = document.getElementsByClassName('array-bar');
+    await quickSort(bars,0,bars.length-1);
+    for(let bar of bars){
+        bar.style.backgroundColor = 'green';
+    }
+    document.getElementById('info-3').style.display = 'block';
+}
+
 
 async function merge(bars,left,mid,right) {
     let temp = [];
@@ -202,6 +252,7 @@ generateArrayButton.addEventListener('click',()=>{
     enableButtons();
     document.getElementById('info').style.display = 'none';
     document.getElementById('info-2').style.display = 'none';
+    document.getElementById('info-3').style.display = 'none';
     generateArray();
     // inputSize.value = '';
 });
@@ -215,6 +266,7 @@ generateArray2.addEventListener('click',()=>{
     enableButtons();
     document.getElementById('info').style.display = 'none';
     document.getElementById('info-2').style.display = 'none';
+    document.getElementById('info-3').style.display = 'none';
     startSortingButton.disabled=false;
     generateArray();
     // inputSize.value = '';
@@ -247,9 +299,16 @@ mergeSortButton.addEventListener('click',()=>{
     startMergeSort();
 })
 
+quickSortButton.addEventListener('click',()=>{
+    isSorting = true;
+    disableButtons();
+    startQuickSort();
+})
+
 clearButton.addEventListener('click',()=>{
     document.getElementById('info').style.display = 'none';
     document.getElementById('info-2').style.display = 'none';
+    document.getElementById('info-3').style.display = 'none';
     arrayContainer.innerHTML = '';
     inputSize.value  = '';
     document.getElementById('generateArray').disabled = false;
@@ -260,6 +319,7 @@ clearButton.addEventListener('click',()=>{
 clear2.addEventListener('click',()=>{
     document.getElementById('info').style.display = 'none';
     document.getElementById('info-2').style.display = 'none';
+    document.getElementById('info-3').style.display = 'none';
     arrayContainer.innerHTML = '';
     inputSize.value  = '';
     document.getElementById('generateArray').disabled = false;
@@ -277,5 +337,5 @@ startSortingButton.addEventListener('click', ()=>{
     else if (selectedAlgorithm === "selectionSort") selectionSort();
     else if (selectedAlgorithm === "mergeSort") startMergeSort();
     else if (selectedAlgorithm === "insertionSort") insertionSort();
-    else if (selectedAlgorithm === "quickSort") quickSort();
+    else if (selectedAlgorithm === "quickSort") startQuickSort();
 });
