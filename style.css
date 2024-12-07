@@ -10,7 +10,7 @@ body {
 }
 .array-bar{
     background-color: #007bff;
-    margin: 0 3px;
+    margin: 0 1px;
     display: inline-block;
     vertical-align: bottom;
     transform-origin: bottom;

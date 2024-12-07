@@ -56,8 +56,8 @@ function generateArray(){
     arrayContainer.innerHTML='';
     array = [];
     const arraySize = parseInt(inputSize.value);
-    if(arraySize<5 || arraySize>40){
-        alert('Enter between 5 and 40');
+    if(arraySize<5 || arraySize>50){
+        alert('Enter between 5 and 50');
         return;
     }
     for(let i = 0 ; i<arraySize ; i++){
