@@ -6,12 +6,23 @@ const insertionSortButton = document.getElementById('insertionSort');
 const mergeSortButton = document.getElementById('mergeSort');
 const inputSize = document.getElementById('arraySize');
 const clearButton = document.getElementById('clear');
+const generateArray2 = document.getElementById('generate-array');
+const clear2 = document.getElementById('clear-all');
+const startSortingButton = document.getElementById('startSorting');
 let isSorting = false;
-
+if(!isSorting){
+    disableButtons();
+    document.getElementById('generateArray').disabled = false;
+    document.getElementById('clear').disabled = false;
+    generateArray2.disabled = false;
+    clear2.disabled=false;
+}
 function allowSorting(){
     disableButtons();
     document.getElementById('generateArray').disabled = false;
     document.getElementById('clear').disabled = false;
+    generateArray2.disabled = false;
+    clear2.disabled=false;
 }
 
 function disableButtons() {
@@ -41,8 +52,8 @@ function generateArray(){
     arrayContainer.innerHTML='';
     array = [];
     const arraySize = parseInt(inputSize.value);
-    if(arraySize<5 || arraySize>100){
-        alert('Enter valid array size');
+    if(arraySize<5 || arraySize>40){
+        alert('Enter between 5 and 40');
         return;
     }
     for(let i = 0 ; i<arraySize ; i++){
@@ -183,9 +194,28 @@ async function startMergeSort() {
 }
 
 generateArrayButton.addEventListener('click',()=>{
+    const arraySizeInput = document.getElementById('arraySize').value;
+    if (!arraySizeInput) {
+        alert('Please enter array size');
+        return;
+    }
     enableButtons();
     document.getElementById('info').style.display = 'none';
     document.getElementById('info-2').style.display = 'none';
+    generateArray();
+    // inputSize.value = '';
+});
+
+generateArray2.addEventListener('click',()=>{
+    const arraySizeInput = document.getElementById('arraySize').value;
+    if (!arraySizeInput) {
+        alert('Please enter array size');
+        return;
+    }
+    enableButtons();
+    document.getElementById('info').style.display = 'none';
+    document.getElementById('info-2').style.display = 'none';
+    startSortingButton.disabled=false;
     generateArray();
     // inputSize.value = '';
 });
@@ -222,5 +252,30 @@ clearButton.addEventListener('click',()=>{
     document.getElementById('info-2').style.display = 'none';
     arrayContainer.innerHTML = '';
     inputSize.value  = '';
-    enableButtons();
+    document.getElementById('generateArray').disabled = false;
+    // enableButtons();
+});
+
+
+clear2.addEventListener('click',()=>{
+    document.getElementById('info').style.display = 'none';
+    document.getElementById('info-2').style.display = 'none';
+    arrayContainer.innerHTML = '';
+    inputSize.value  = '';
+    document.getElementById('generateArray').disabled = false;
+    startSortingButton.disabled = true;
+    generateArray2.disabled=false;
+    // enableButtons();
+});
+
+startSortingButton.addEventListener('click', ()=>{
+    isSorting = true;
+    disableButtons();
+    clear2.disabled = false;
+    let selectedAlgorithm = document.getElementById("algorithmDropdown").value;
+    if (selectedAlgorithm == "bubbleSort") bubbleSort();
+    else if (selectedAlgorithm === "selectionSort") selectionSort();
+    else if (selectedAlgorithm === "mergeSort") startMergeSort();
+    else if (selectedAlgorithm === "insertionSort") insertionSort();
+    else if (selectedAlgorithm === "quickSort") quickSort();
 });

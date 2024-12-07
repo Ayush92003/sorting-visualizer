@@ -8,37 +8,59 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body class="bg-dark text-dark">
-    <div class="container text-center my-4 bg-dark text-white p-4">
-        <h1 class="display-6">Sorting Visualizer</h1>
-        <div class="controls my-3 d-flex align-items-center justify-content-center" >
-            <input type="number" id="arraySize" placeholder="Enter array size (5-100)" class="form-control d-inline-block w-25 me-2">
-            <label for="speedRange">Visualization Speed:</label>
-            <input type="range" min="0" max="500" value="100" oninput=updateSpeed(this.value)>
-            <span id="speedValue">100ms</span>
+    <div class="box">
+        <div class="container text-center my-4 bg-dark text-white p-4">
+            <h1 class="display-6">Sorting Visualizer</h1>
+            <div class="controls inputClass my-3 d-flex align-items-center justify-content-center" >
+                <input type="number" id="arraySize" placeholder="Enter" class="arrayInput form-control d-inline-block w-25 me-2">
+                <div class="speed">
+                    <label for="speedRange">Delay Speed:</label>
+                    <br>
+                    <input type="range" min="0" max="500" value="100" oninput=updateSpeed(this.value)>
+                    <span id="speedValue">100ms</span>
+                </div>
+            </div>
+            <div class="button-container">
+                <button id="generateArray" class="btn btn-primary me-2">Generate Array</button>
+                <button id="bubbleSort" class="btn btn-success me-2">Bubble Sort</button>
+                <button id="selectionSort" class="btn btn-info me-2">Selection Sort</button>
+                <button id="insertionSort" class="btn btn-warning me-2">Insertion Sort</button>
+                <button id="mergeSort" class="btn btn-outline-info me-2">Merge Sort</button>
+                <button id="quickSort" class="btn btn-light me-2">Quick Sort</button>
+                <button id="clear" class="btn btn-danger me-2">Clear All</button>
+            </div>
+            <div class="buttons">
+                <button id="generate-array" class="btn btn-primary me-2">Generate Array</button>
+                <button id="startSorting" class="btn btn-success me-2">Start Sorting</button>
+                <button id="clear-all" class="btn btn-danger me-2">Clear All</button>
+            </div>
+            <div class="algorithm-dropdown">
+                <select class="form-select" aria-label="Select Sorting Algorithm" id="algorithmDropdown">
+                    <option value="bubbleSort">Bubble Sort</option>
+                    <!-- <option value="bubbleSort">Bubble Sort</option> -->
+                    <option value="selectionSort">Selection Sort</option>
+                    <option value="insertionSort">Insertion Sort</option>
+                    <option value="mergeSort">Merge Sort</option>
+                    <option value="quickSort">Quick Sort</option>
+                </select>
+            </div>
 
-            <button id="generateArray" class="btn btn-primary me-2">Generate Array</button>
-            <button id="bubbleSort" class="btn btn-success me-2">Bubble Sort</button>
-            <button id="selectionSort" class="btn btn-info me-2">Selection Sort</button>
-            <button id="insertionSort" class="btn btn-warning me-2">Insertion Sort</button>
-            <button id="mergeSort" class="btn btn-outline-info me-2">Merge Sort</button>
-            <button id="quickSort" class="btn btn-light me-2">Quick Sort</button>
-            <button id="clear" class="btn btn-danger me-2">Clear All</button>
-        </div>
-        <div id="array-container" class="array-container d-flex align-items-end"></div>
-        <div class="alert alert-success my-2" id="info" style="display: none;">
-            <h4 class="alert-heading">Sorting Complete!</h4>
-            <p>All the elements are sorted in ascending order.</p>
-            <hr>
-            <p class="mb-0">Time Complexity: <span class="badge bg-primary">O(N^2)</span></p>
-            <p class="mb-0">Space Complexity: <span class="badge bg-secondary">O(1)</span></p>
-        </div>               
-        
-        <div class="alert alert-success my-2" id="info-2" style="display: none;">
-            <h4 class="alert-heading">Sorting Complete!</h4>
-            <p>All the elements are sorted in ascending order.</p>
-            <hr>
-            <p class="mb-0">Time Complexity: <span class="badge bg-primary">O(NlogN)</span></p>
-            <p class="mb-0">Space Complexity: <span class="badge bg-secondary">O(N)</span></p>
+            <div id="array-container" class="array-container d-flex align-items-end"></div>
+            <div class="alert alert-success my-2" id="info" style="display: none;">
+                <h4 class="alert-heading">Sorting Complete!</h4>
+                <p>All the elements are sorted in ascending order.</p>
+                <hr>
+                <p class="mb-0">Time Complexity: <span class="badge bg-primary">O(N^2)</span></p>
+                <p class="mb-0">Space Complexity: <span class="badge bg-secondary">O(1)</span></p>
+            </div>               
+            
+            <div class="alert alert-success my-2" id="info-2" style="display: none;">
+                <h4 class="alert-heading">Sorting Complete!</h4>
+                <p>All the elements are sorted in ascending order.</p>
+                <hr>
+                <p class="mb-0">Time Complexity: <span class="badge bg-primary">O(NlogN)</span></p>
+                <p class="mb-0">Space Complexity: <span class="badge bg-secondary">O(N)</span></p>
+            </div>
         </div>
     </div>
 </body>
